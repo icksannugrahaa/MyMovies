@@ -7,15 +7,15 @@ import com.sh.s1.made.mymovies.core.data.source.local.room.MovieDao
 import com.sh.s1.made.mymovies.domain.model.Movie
 import io.reactivex.Flowable
 
-class LocalDataSource private constructor(private val movieDao: MovieDao) {
+class LocalDataSource(private val movieDao: MovieDao) {
 
     companion object {
-        private var instance: LocalDataSource? = null
-
-        fun getInstance(movieDao: MovieDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(movieDao)
-            }
+//        private var instance: LocalDataSource? = null
+//
+//        fun getInstance(movieDao: MovieDao): LocalDataSource =
+//            instance ?: synchronized(this) {
+//                instance ?: LocalDataSource(movieDao)
+//            }
     }
 
     fun getPopularMovies(): Flowable<List<MovieEntity>> = movieDao.getPopularMovies()

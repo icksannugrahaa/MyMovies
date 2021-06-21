@@ -9,18 +9,18 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    fun provideApiService(): ApiService {
-        val loggingInterceptor =
-            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-        val client = OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
-            .build()
-        val retrofit = Retrofit.Builder()
-            .baseUrl("$BASE_URL/$API_VER/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .client(client)
-            .build()
-        return retrofit.create(ApiService::class.java)
-    }
+//    fun provideApiService(): ApiService {
+//        val loggingInterceptor =
+//            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+//        val client = OkHttpClient.Builder()
+//            .addInterceptor(loggingInterceptor)
+//            .build()
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl("$BASE_URL/$API_VER/")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//            .client(client)
+//            .build()
+//        return retrofit.create(ApiService::class.java)
+//    }
 }

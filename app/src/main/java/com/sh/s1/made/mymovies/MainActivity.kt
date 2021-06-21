@@ -30,10 +30,11 @@ import com.sh.s1.made.mymovies.favorite.FavoriteFragment
 import com.sh.s1.made.mymovies.home.HomeFragment
 import com.sh.s1.made.mymovies.search.SearchFragment
 import com.sh.s1.made.mymovies.search.SearchViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
-    private lateinit var searchViewModel: SearchViewModel
+    private val searchViewModel: SearchViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,8 +46,8 @@ class MainActivity : AppCompatActivity(){
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
-        val factory = ViewModelFactory.getInstance(this)
-        searchViewModel = ViewModelProvider(this, factory)[SearchViewModel::class.java]
+//        val factory = ViewModelFactory.getInstance(this)
+//        searchViewModel = ViewModelProvider(this, factory)[SearchViewModel::class.java]
 
         binding.bnvMain.setOnNavigationItemSelectedListener {
             when (it.itemId) {

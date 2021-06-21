@@ -17,9 +17,10 @@ import com.sh.s1.made.mymovies.core.ui.MovieAdapter
 import com.sh.s1.made.mymovies.core.ui.ViewModelFactory
 import com.sh.s1.made.mymovies.databinding.FragmentHomeBinding
 import com.sh.s1.made.mymovies.detail.DetailMovieActivity
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
-    private lateinit var homeViewModel: HomeViewModel
+    private val homeViewModel: HomeViewModel by viewModel()
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -36,12 +37,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val factory = ViewModelFactory.getInstance(requireActivity())
-            homeViewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
-
             showPopularMovie()
-            showTopratedMovie()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showPopularMovie()
+        showTopratedMovie()
     }
 
     private fun showPopularMovie() {
@@ -63,6 +66,7 @@ class HomeFragment : Fragment() {
                         Log.d("DATA_MOVIE_POPULAR", movie.data.toString())
                         binding.progressBar.visibility = View.GONE
                         moviePopularAdapter.setData(movie.data)
+                        showTopratedMovie()
                     }
                     is Resource.Error -> {
                         binding.progressBar.visibility = View.GONE

@@ -14,9 +14,10 @@ import com.sh.s1.made.mymovies.core.ui.SearchAdapter
 import com.sh.s1.made.mymovies.core.ui.ViewModelFactory
 import com.sh.s1.made.mymovies.databinding.FragmentFavoriteBinding
 import com.sh.s1.made.mymovies.detail.DetailMovieActivity
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavoriteFragment : Fragment() {
-    private lateinit var favoriteViewModel: FavoriteViewModel
+    private val favoriteViewModel: FavoriteViewModel by viewModel()
 
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
@@ -44,9 +45,6 @@ class FavoriteFragment : Fragment() {
                     startActivity(this)
                 }
             }
-
-            val factory = ViewModelFactory.getInstance(requireActivity())
-            favoriteViewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
 
             favoriteViewModel.favoriteMovie.observe(viewLifecycleOwner, { movies ->
                 movieAdapter.setData(movies)

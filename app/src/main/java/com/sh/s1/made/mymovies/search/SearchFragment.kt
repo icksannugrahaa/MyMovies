@@ -24,10 +24,11 @@ import com.sh.s1.made.mymovies.databinding.FragmentSearchBinding
 import com.sh.s1.made.mymovies.detail.DetailMovieActivity
 import com.sh.s1.made.mymovies.domain.model.Movie
 import com.sh.s1.made.mymovies.home.HomeViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 @SuppressLint("SetTextI18n")
 class SearchFragment : Fragment() {
-    private lateinit var searchViewModel: SearchViewModel
+    private val searchViewModel: SearchViewModel by viewModel()
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
@@ -59,8 +60,6 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val factory = ViewModelFactory.getInstance(requireActivity())
-            searchViewModel = ViewModelProvider(this, factory)[SearchViewModel::class.java]
             val data = arguments?.getString(ARG_QUERY)
             Log.d("DATA_PARCELABLE", data.toString())
             searchMovies()

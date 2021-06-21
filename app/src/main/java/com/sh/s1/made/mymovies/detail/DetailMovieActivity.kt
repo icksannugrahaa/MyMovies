@@ -23,6 +23,7 @@ import com.sh.s1.made.mymovies.core.utils.MyUtils.toHourStringFormat
 import com.sh.s1.made.mymovies.databinding.ActivityDetailMovieBinding
 import com.sh.s1.made.mymovies.databinding.ContentDetailMovieBinding
 import com.sh.s1.made.mymovies.domain.model.Movie
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailMovieActivity : AppCompatActivity() {
 
@@ -33,7 +34,7 @@ class DetailMovieActivity : AppCompatActivity() {
         const val EXTRA_TITLE = "extra_title"
     }
 
-    private lateinit var detailMovieViewModel: DetailMovieViewModel
+    private val detailMovieViewModel: DetailMovieViewModel by viewModel()
     private lateinit var binding: ActivityDetailMovieBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,8 +49,6 @@ class DetailMovieActivity : AppCompatActivity() {
         supportActionBar?.title = title.toString()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val factory = ViewModelFactory.getInstance(this)
-        detailMovieViewModel = ViewModelProvider(this, factory)[DetailMovieViewModel::class.java]
         Log.d("DATA_CATEGORY", category.toString())
         if (id != null) {
             detailMovieViewModel.getDetailMovie(id.toString(), favorite!!, category!!).observe(this, { movie ->
