@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import com.sh.s1.made.mymovies.core.data.source.local.entity.MovieEntity
 import com.sh.s1.made.mymovies.core.data.source.local.room.MovieDao
 import com.sh.s1.made.mymovies.domain.model.Movie
+import io.reactivex.Flowable
 
 class LocalDataSource private constructor(private val movieDao: MovieDao) {
 
@@ -17,18 +18,18 @@ class LocalDataSource private constructor(private val movieDao: MovieDao) {
             }
     }
 
-    fun getPopularMovies(): LiveData<List<MovieEntity>> = movieDao.getPopularMovies()
+    fun getPopularMovies(): Flowable<List<MovieEntity>> = movieDao.getPopularMovies()
 
-    fun getTopRatedMovies(): LiveData<List<MovieEntity>> = movieDao.getTopRatedMovies()
+    fun getTopRatedMovies(): Flowable<List<MovieEntity>> = movieDao.getTopRatedMovies()
 
-    fun getSearchMovies(query: String): LiveData<List<MovieEntity>> {
+    fun getSearchMovies(query: String): Flowable<List<MovieEntity>> {
         val newQuery = "%$query%"
         return movieDao.getSearchMovies(newQuery)
     }
 
-    fun getDetailMovie(id: String): LiveData<MovieEntity> = movieDao.getDetailMovie(id)
+    fun getDetailMovie(id: String): Flowable<MovieEntity> = movieDao.getDetailMovie(id)
 
-    fun getFavoriteMovies(): LiveData<List<MovieEntity>> = movieDao.getFavoriteMovies()
+    fun getFavoriteMovies(): Flowable<List<MovieEntity>> = movieDao.getFavoriteMovies()
 
     fun insertMovie(movies: List<MovieEntity>) = movieDao.insertMovie(movies)
 
@@ -36,6 +37,6 @@ class LocalDataSource private constructor(private val movieDao: MovieDao) {
 
     fun setFavoriteMovie(movie: MovieEntity, newState: Boolean) {
         movie.isFavorite = newState
-        movieDao.updateMovie(movie)
+        movieDao.updateFavoriteMovie(movie)
     }
 }

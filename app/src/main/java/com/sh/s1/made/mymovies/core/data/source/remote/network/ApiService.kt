@@ -6,6 +6,7 @@ import com.sh.s1.made.mymovies.core.utils.Consts.MOVIE_DETAIL_EP
 import com.sh.s1.made.mymovies.core.utils.Consts.MOVIE_POPULAR_EP
 import com.sh.s1.made.mymovies.core.utils.Consts.MOVIE_SEARCH_EP
 import com.sh.s1.made.mymovies.core.utils.Consts.MOVIE_TOP_RATED_EP
+import io.reactivex.Flowable
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -17,14 +18,14 @@ interface ApiService {
         @Query("api_key") api_key: String,
         @Query("language") language: String,
         @Query("page") page: String
-    ): Call<ResponseMovies>
+    ): Flowable<ResponseMovies>
 
     @GET(MOVIE_TOP_RATED_EP)
     fun getTopRatedMovies(
         @Query("api_key") api_key: String,
         @Query("language") language: String,
         @Query("page") page: String
-    ): Call<ResponseMovies>
+    ): Flowable<ResponseMovies>
 
     @GET(MOVIE_SEARCH_EP)
     fun getSearchMovies(
@@ -32,12 +33,12 @@ interface ApiService {
         @Query("language") language: String,
         @Query("query") query: String,
         @Query("page") page: String
-    ): Call<ResponseMovies>
+    ): Flowable<ResponseMovies>
 
     @GET(MOVIE_DETAIL_EP)
     fun getDetailMovie(
         @Path("movie_id") id: String,
         @Query("api_key") api_key: String,
         @Query("language") language: String
-    ): Call<ResultMovieDetail>
+    ): Flowable<ResultMovieDetail>
 }
