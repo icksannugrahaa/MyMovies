@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">MyMovies</string>
+    <string name="menu_favorite">Menu Favorite</string>
+    <string name="image_description">Image</string>
+    <string name="score">0</string>
+    <string name="text_tagline">Tag Line</string>
+    <string name="text_detail">Detail</string>
+    <string name="text_genre">Genre</string>
+    <string name="text_release">Release</string>
+    <string name="text_description">Description</string>
+    <string name="favorite">Favorite</string>
+    <string name="menu_home">Home</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_data">No Data</string>
+    <string name="text_primary">Title</string>
+    <string name="text_subtitle">Subtitle</string>
+    <string name="something_wrong">Something went wrong</string>
+    <string name="navigation_drawer_open">Navigation Drawer Open</string>
+    <string name="navigation_drawer_close">Navigation Drawer Close</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="search">Search</string>
+    <string name="duration">Duration</string>
+</resources>
