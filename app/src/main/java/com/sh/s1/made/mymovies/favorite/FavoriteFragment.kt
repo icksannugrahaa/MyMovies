@@ -42,10 +42,11 @@ class FavoriteFragment : Fragment() {
                 }
             }
 
-            favoriteViewModel.favoriteMovie.observe(viewLifecycleOwner, { movies ->
+            favoriteViewModel.favoriteMovie.observe(viewLifecycleOwner) { movies ->
                 movieAdapter.setData(movies)
-                binding.viewEmpty.root.visibility = if (movies.isNotEmpty()) View.GONE else View.VISIBLE
-            })
+                binding.viewEmpty.root.visibility =
+                    if (movies.isNotEmpty()) View.GONE else View.VISIBLE
+            }
 
             with(binding.rvTourism) {
                 layoutManager = LinearLayoutManager(context)

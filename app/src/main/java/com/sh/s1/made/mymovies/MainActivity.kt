@@ -11,8 +11,6 @@ import com.sh.s1.made.mymovies.databinding.ActivityMainBinding
 import com.sh.s1.made.mymovies.favorite.FavoriteFragment
 import com.sh.s1.made.mymovies.home.HomeFragment
 import com.sh.s1.made.mymovies.search.SearchFragment
-import com.sh.s1.made.mymovies.search.SearchViewModel
-import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding

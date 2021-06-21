@@ -11,7 +11,7 @@ import com.sh.s1.made.mymovies.core.data.Resource
 import com.sh.s1.made.mymovies.core.utils.GlideUtils.loadImage
 import com.sh.s1.made.mymovies.core.utils.MyUtils.toHourStringFormat
 import com.sh.s1.made.mymovies.databinding.ActivityDetailMovieBinding
-import com.sh.s1.made.mymovies.domain.model.Movie
+import com.sh.s1.made.mymovies.core.domain.model.Movie
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailMovieActivity : AppCompatActivity() {
@@ -40,7 +40,7 @@ class DetailMovieActivity : AppCompatActivity() {
 
         Log.d("DATA_CATEGORY", category.toString())
         if (id != null) {
-            detailMovieViewModel.getDetailMovie(id.toString(), favorite!!, category!!).observe(this, { movie ->
+            detailMovieViewModel.getDetailMovie(id.toString(), favorite!!, category!!).observe(this) { movie ->
                 if (movie != null) {
                     when (movie) {
                         is Resource.Loading -> binding.content.progressBar.visibility = View.VISIBLE
@@ -52,11 +52,12 @@ class DetailMovieActivity : AppCompatActivity() {
                         is Resource.Error -> {
                             binding.content.progressBar.visibility = View.GONE
                             binding.content.viewError.root.visibility = View.VISIBLE
-                            binding.content.viewError.tvError.text = movie.message ?: getString(R.string.something_wrong)
+                            binding.content.viewError.tvError.text =
+                                movie.message ?: getString(R.string.something_wrong)
                         }
                     }
                 }
-            })
+            }
         }
     }
 

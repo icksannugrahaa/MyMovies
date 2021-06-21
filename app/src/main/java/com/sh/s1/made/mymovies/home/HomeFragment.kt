@@ -55,7 +55,7 @@ class HomeFragment : Fragment() {
                 startActivity(this)
             }
         }
-        homeViewModel.moviePopular.observe(viewLifecycleOwner, { movie ->
+        homeViewModel.moviePopular.observe(viewLifecycleOwner) { movie ->
             if (movie != null) {
                 when (movie) {
                     is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
@@ -68,11 +68,12 @@ class HomeFragment : Fragment() {
                     is Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
                         binding.viewError.root.visibility = View.VISIBLE
-                        binding.viewError.tvError.text = movie.message ?: getString(R.string.something_wrong)
+                        binding.viewError.tvError.text =
+                            movie.message ?: getString(R.string.something_wrong)
                     }
                 }
             }
-        })
+        }
 
         with(binding.rvMoviePopular) {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -93,7 +94,7 @@ class HomeFragment : Fragment() {
             }
         }
         val internet = (requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo?.isConnected
-        homeViewModel.movieTopRated(internet?:false).observe(viewLifecycleOwner, { movie ->
+        homeViewModel.movieTopRated(internet?:false).observe(viewLifecycleOwner) { movie ->
             if (movie != null) {
                 when (movie) {
                     is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
@@ -105,11 +106,12 @@ class HomeFragment : Fragment() {
                     is Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
                         binding.viewError.root.visibility = View.VISIBLE
-                        binding.viewError.tvError.text = movie.message ?: getString(R.string.something_wrong)
+                        binding.viewError.tvError.text =
+                            movie.message ?: getString(R.string.something_wrong)
                     }
                 }
             }
-        })
+        }
 
         with(binding.rvMovieTopRated) {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

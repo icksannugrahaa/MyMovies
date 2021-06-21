@@ -43,7 +43,7 @@ class SearchFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -76,7 +76,7 @@ class SearchFragment : Fragment() {
             binding.tvSearchResult.text = "Search \"$query\""
             val internet = (requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo?.isConnected
 
-            searchViewModel.searchMovie(query, internet ?: false).observe(viewLifecycleOwner, { movie ->
+            searchViewModel.searchMovie(query, internet ?: false).observe(viewLifecycleOwner) { movie ->
                 Log.d("DATA_MOVIE_SEARCH", movie.data.toString())
                 if (movie != null) {
                     when (movie) {
@@ -99,7 +99,7 @@ class SearchFragment : Fragment() {
                     setHasFixedSize(true)
                     adapter = searchAdapter
                 }
-            })
+            }
         }
     }
 

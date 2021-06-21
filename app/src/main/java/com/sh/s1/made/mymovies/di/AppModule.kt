@@ -1,8 +1,8 @@
 package com.sh.s1.made.mymovies.di
 
 import com.sh.s1.made.mymovies.detail.DetailMovieViewModel
-import com.sh.s1.made.mymovies.domain.usecase.MovieInteractor
-import com.sh.s1.made.mymovies.domain.usecase.MovieUseCase
+import com.sh.s1.made.mymovies.core.domain.usecase.MovieInteractor
+import com.sh.s1.made.mymovies.core.domain.usecase.MovieUseCase
 import com.sh.s1.made.mymovies.favorite.FavoriteViewModel
 import com.sh.s1.made.mymovies.home.HomeViewModel
 import com.sh.s1.made.mymovies.search.SearchViewModel
