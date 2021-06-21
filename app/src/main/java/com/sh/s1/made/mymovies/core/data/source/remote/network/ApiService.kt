@@ -7,7 +7,6 @@ import com.sh.s1.made.mymovies.core.utils.Consts.MOVIE_POPULAR_EP
 import com.sh.s1.made.mymovies.core.utils.Consts.MOVIE_SEARCH_EP
 import com.sh.s1.made.mymovies.core.utils.Consts.MOVIE_TOP_RATED_EP
 import io.reactivex.Flowable
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

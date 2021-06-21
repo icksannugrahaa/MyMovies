@@ -9,12 +9,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sh.s1.made.mymovies.R
 import com.sh.s1.made.mymovies.core.data.Resource
 import com.sh.s1.made.mymovies.core.ui.MovieAdapter
-import com.sh.s1.made.mymovies.core.ui.ViewModelFactory
 import com.sh.s1.made.mymovies.databinding.FragmentHomeBinding
 import com.sh.s1.made.mymovies.detail.DetailMovieActivity
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -28,7 +26,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -44,7 +42,6 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         showPopularMovie()
-        showTopratedMovie()
     }
 
     private fun showPopularMovie() {

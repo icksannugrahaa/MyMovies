@@ -1,6 +1,5 @@
 package com.sh.s1.made.mymovies.domain.repository
 
-import androidx.lifecycle.LiveData
 import com.sh.s1.made.mymovies.core.data.Resource
 import com.sh.s1.made.mymovies.domain.model.Movie
 import io.reactivex.Flowable

@@ -7,9 +7,6 @@ data class ResultMovieDetail(
         @field:SerializedName("original_title")
         val title: String? = null,
 
-        @field:SerializedName("backdrop_path")
-        val backdropPath: String? = null,
-
         @field:SerializedName("genres")
         val genres: List<GenresItem?>? = null,
 
@@ -25,9 +22,6 @@ data class ResultMovieDetail(
         @field:SerializedName("poster_path")
         val posterPath: String? = null,
 
-        @field:SerializedName("production_companies")
-        val productionCountries: List<ProductionCountriesItem?>? = null,
-
         @field:SerializedName("release_date")
         val releaseDate: String? = null,
 
@@ -36,9 +30,6 @@ data class ResultMovieDetail(
 
         @field:SerializedName("tagline")
         val tagline: String? = null,
-
-        @field:SerializedName("homepage")
-        val homepage: String? = null,
 
         @field:SerializedName("status")
         val status: String? = null

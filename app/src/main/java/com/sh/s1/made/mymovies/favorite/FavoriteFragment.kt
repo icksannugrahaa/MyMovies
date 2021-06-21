@@ -6,12 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sh.s1.made.mymovies.R
-import com.sh.s1.made.mymovies.core.ui.MovieAdapter
 import com.sh.s1.made.mymovies.core.ui.SearchAdapter
-import com.sh.s1.made.mymovies.core.ui.ViewModelFactory
 import com.sh.s1.made.mymovies.databinding.FragmentFavoriteBinding
 import com.sh.s1.made.mymovies.detail.DetailMovieActivity
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -25,7 +21,7 @@ class FavoriteFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }

@@ -1,27 +1,16 @@
 package com.sh.s1.made.mymovies.detail
 
-import android.app.SearchManager
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
-import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.sh.s1.made.mymovies.R
 import com.sh.s1.made.mymovies.core.data.Resource
-import com.sh.s1.made.mymovies.core.data.source.local.entity.MovieEntity
-import com.sh.s1.made.mymovies.core.ui.ViewModelFactory
 import com.sh.s1.made.mymovies.core.utils.GlideUtils.loadImage
 import com.sh.s1.made.mymovies.core.utils.MyUtils.toHourStringFormat
 import com.sh.s1.made.mymovies.databinding.ActivityDetailMovieBinding
-import com.sh.s1.made.mymovies.databinding.ContentDetailMovieBinding
 import com.sh.s1.made.mymovies.domain.model.Movie
 import org.koin.android.viewmodel.ext.android.viewModel
 

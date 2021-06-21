@@ -1,6 +1,5 @@
 package com.sh.s1.made.mymovies.core.data.source.local.room
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.sh.s1.made.mymovies.core.data.source.local.entity.MovieEntity
 import io.reactivex.Completable

@@ -10,20 +10,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sh.s1.made.mymovies.R
 import com.sh.s1.made.mymovies.core.data.Resource
-import com.sh.s1.made.mymovies.core.ui.MovieAdapter
 import com.sh.s1.made.mymovies.core.ui.SearchAdapter
-import com.sh.s1.made.mymovies.core.ui.ViewModelFactory
-import com.sh.s1.made.mymovies.databinding.FragmentHomeBinding
 import com.sh.s1.made.mymovies.databinding.FragmentSearchBinding
 import com.sh.s1.made.mymovies.detail.DetailMovieActivity
-import com.sh.s1.made.mymovies.domain.model.Movie
-import com.sh.s1.made.mymovies.home.HomeViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 @SuppressLint("SetTextI18n")
@@ -82,7 +74,6 @@ class SearchFragment : Fragment() {
 
         if(query != null) {
             binding.tvSearchResult.text = "Search \"$query\""
-//            searchViewModel.setQuery("avatar")
             val internet = (requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo?.isConnected
 
             searchViewModel.searchMovie(query, internet ?: false).observe(viewLifecycleOwner, { movie ->

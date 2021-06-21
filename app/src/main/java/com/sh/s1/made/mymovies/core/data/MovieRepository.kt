@@ -1,11 +1,5 @@
 package com.sh.s1.made.mymovies.core.data
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.util.Log
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import com.sh.s1.made.mymovies.core.data.source.local.LocalDataSource
 import com.sh.s1.made.mymovies.core.data.source.remote.RemoteDataSource
 import com.sh.s1.made.mymovies.core.data.source.remote.network.ApiResponse
@@ -23,20 +17,6 @@ class MovieRepository(
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ) : IMovieRepository {
-
-    companion object {
-//        @Volatile
-//        private var instance: MovieRepository? = null
-//
-//        fun getInstance(
-//            remoteData: RemoteDataSource,
-//            localData: LocalDataSource,
-//            appExecutors: AppExecutors
-//        ): MovieRepository =
-//            instance ?: synchronized(this) {
-//                instance ?: MovieRepository(remoteData, localData, appExecutors)
-//            }
-    }
 
     override fun getPopularMovies(): Flowable<Resource<List<Movie>>> =
         object : NetworkBoundResource<List<Movie>, List<ResultMovieDetail>>(appExecutors) {

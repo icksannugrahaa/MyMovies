@@ -1,7 +1,5 @@
 package com.sh.s1.made.mymovies.domain.usecase
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import com.sh.s1.made.mymovies.domain.model.Movie
 import com.sh.s1.made.mymovies.domain.repository.IMovieRepository
 

@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sh.s1.made.mymovies.R
-import com.sh.s1.made.mymovies.core.utils.Consts
 import com.sh.s1.made.mymovies.core.utils.GlideUtils.loadImage
 import com.sh.s1.made.mymovies.databinding.ItemListMovieVerticalBinding
 import com.sh.s1.made.mymovies.domain.model.Movie
