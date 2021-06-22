@@ -19,7 +19,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "API_KEY", '"f7ece47ab3933c7057f381b86dce8ebc"')
-        consumerProguardFiles "consumer-rules.pro"
+    }
+    lintOptions {
+        abortOnError false
     }
     buildFeatures {
         viewBinding = true
@@ -27,7 +29,6 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "RELEASE", '"f7ece47ab3933c7057f381b86dce8ebc"')
         }
     }

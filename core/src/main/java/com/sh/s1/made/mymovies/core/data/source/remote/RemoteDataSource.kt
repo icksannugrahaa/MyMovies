@@ -11,6 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
+@Suppress("UNCHECKED_CAST")
 @SuppressLint("CheckResult")
 class RemoteDataSource(private val apiService: ApiService) {
 

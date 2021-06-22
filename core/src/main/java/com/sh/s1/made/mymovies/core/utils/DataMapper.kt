@@ -42,8 +42,8 @@ object DataMapper {
         state: Boolean
     ): MovieEntity {
         var genreJoin = ""
-        input.genres?.forEach { gen ->
-            genreJoin += "${gen?.name}, "
+        input.genres?.forEach {
+            genreJoin += "${it?.name}, "
         }
         return MovieEntity(
             id = input.id ?: 0,

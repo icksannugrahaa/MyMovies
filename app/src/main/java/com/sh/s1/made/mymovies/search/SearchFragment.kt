@@ -1,9 +1,6 @@
 package com.sh.s1.made.mymovies.search
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,9 +12,10 @@ import com.sh.s1.made.mymovies.core.data.Resource
 import com.sh.s1.made.mymovies.core.ui.SearchAdapter
 import com.sh.s1.made.mymovies.databinding.FragmentSearchBinding
 import com.sh.s1.made.mymovies.detail.DetailMovieActivity
+import com.sh.s1.made.mymovies.utils.NetworkUtils.isInternetAvailable
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.lang.StringBuilder
 
-@SuppressLint("SetTextI18n")
 class SearchFragment : Fragment() {
     private val searchViewModel: SearchViewModel by viewModel()
     private var _binding: FragmentSearchBinding? = null
@@ -51,7 +49,6 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val data = arguments?.getString(ARG_QUERY)
             searchMovies()
         }
     }
@@ -71,10 +68,8 @@ class SearchFragment : Fragment() {
         }
 
         if(query != null) {
-            binding.tvSearchResult.text = "Search \"$query\""
-            val internet = (requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo?.isConnected
-
-            searchViewModel.searchMovie(query, internet ?: false).observe(viewLifecycleOwner) { movie ->
+            binding.tvSearchResult.text = StringBuilder().append("Search \"$query\"").toString()
+            searchViewModel.searchMovie(query, isInternetAvailable(requireContext())).observe(viewLifecycleOwner) { movie ->
                 if (movie != null) {
                     when (movie) {
                         is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
@@ -99,5 +94,4 @@ class SearchFragment : Fragment() {
             }
         }
     }
-
 }

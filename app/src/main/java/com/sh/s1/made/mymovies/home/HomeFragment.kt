@@ -1,19 +1,20 @@
 package com.sh.s1.made.mymovies.home
 
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sh.s1.made.mymovies.R
 import com.sh.s1.made.mymovies.core.data.Resource
 import com.sh.s1.made.mymovies.core.ui.MovieAdapter
 import com.sh.s1.made.mymovies.databinding.FragmentHomeBinding
 import com.sh.s1.made.mymovies.detail.DetailMovieActivity
+import com.sh.s1.made.mymovies.utils.NetworkUtils
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -91,8 +92,7 @@ class HomeFragment : Fragment() {
                 startActivity(this)
             }
         }
-        val internet = (requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo?.isConnected
-        homeViewModel.movieTopRated(internet?:false).observe(viewLifecycleOwner) { movie ->
+        homeViewModel.movieTopRated(NetworkUtils.isInternetAvailable(requireContext())).observe(viewLifecycleOwner) { movie ->
             if (movie != null) {
                 when (movie) {
                     is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
