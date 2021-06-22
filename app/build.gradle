@@ -20,6 +20,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "API_KEY", '"f7ece47ab3933c7057f381b86dce8ebc"')
     }
+    lintOptions {
+        abortOnError false
+    }
     buildFeatures {
         viewBinding true
     }
