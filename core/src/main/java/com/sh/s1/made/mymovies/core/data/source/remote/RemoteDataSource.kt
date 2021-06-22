@@ -1,7 +1,6 @@
 package com.sh.s1.made.mymovies.core.data.source.remote
 
 import android.annotation.SuppressLint
-import android.util.Log
 import com.sh.s1.made.mymovies.core.BuildConfig
 import com.sh.s1.made.mymovies.core.data.source.remote.network.ApiResponse
 import com.sh.s1.made.mymovies.core.data.source.remote.network.ApiService
@@ -30,7 +29,6 @@ class RemoteDataSource(private val apiService: ApiService) {
                 resultData.onNext((if (dataArray != null) ApiResponse.Success(dataArray) else ApiResponse.Empty) as ApiResponse<List<ResultMovieDetail>>)
             }, { error ->
                 resultData.onNext(ApiResponse.Error(error.message.toString()))
-                Log.e("RemoteDataSource", error.toString())
             })
 
         return resultData.toFlowable(BackpressureStrategy.BUFFER)
@@ -51,7 +49,6 @@ class RemoteDataSource(private val apiService: ApiService) {
                 resultData.onNext((if (dataArray != null) ApiResponse.Success(dataArray) else ApiResponse.Empty) as ApiResponse<List<ResultMovieDetail>>)
             }, { error ->
                 resultData.onNext(ApiResponse.Error(error.message.toString()))
-                Log.e("RemoteDataSource", error.toString())
             })
 
         return resultData.toFlowable(BackpressureStrategy.BUFFER)
@@ -72,7 +69,6 @@ class RemoteDataSource(private val apiService: ApiService) {
                 resultData.onNext((if (dataArray != null) ApiResponse.Success(dataArray) else ApiResponse.Empty) as ApiResponse<List<ResultMovieDetail>>)
             }, { error ->
                 resultData.onNext(ApiResponse.Error(error.message.toString()))
-                Log.e("RemoteDataSource", error.toString())
             })
 
         return resultData.toFlowable(BackpressureStrategy.BUFFER)
@@ -92,7 +88,6 @@ class RemoteDataSource(private val apiService: ApiService) {
                 resultData.onNext(if(response.id != null) ApiResponse.Success(response) else ApiResponse.Empty)
             }, { error ->
                 resultData.onNext(ApiResponse.Error(error.message.toString()))
-                Log.e("RemoteDataSource", error.toString())
             })
 
         return resultData.toFlowable(BackpressureStrategy.BUFFER)

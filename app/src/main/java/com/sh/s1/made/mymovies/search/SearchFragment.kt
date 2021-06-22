@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -53,7 +52,6 @@ class SearchFragment : Fragment() {
 
         if (activity != null) {
             val data = arguments?.getString(ARG_QUERY)
-            Log.d("DATA_PARCELABLE", data.toString())
             searchMovies()
         }
     }
@@ -77,7 +75,6 @@ class SearchFragment : Fragment() {
             val internet = (requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo?.isConnected
 
             searchViewModel.searchMovie(query, internet ?: false).observe(viewLifecycleOwner) { movie ->
-                Log.d("DATA_MOVIE_SEARCH", movie.data.toString())
                 if (movie != null) {
                     when (movie) {
                         is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE

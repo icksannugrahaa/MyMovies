@@ -9,17 +9,13 @@
     <string name="text_release">Release</string>
     <string name="text_description">Description</string>
     <string name="favorite">Favorite</string>
-    <string name="menu_home">Home</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="no_data">No Data</string>
     <string name="text_primary">Title</string>
     <string name="text_subtitle">Subtitle</string>
     <string name="something_wrong">Something went wrong</string>
-    <string name="navigation_drawer_open">Navigation Drawer Open</string>
-    <string name="navigation_drawer_close">Navigation Drawer Close</string>
     <string name="popular">Popular</string>
     <string name="top_rated">Top Rated</string>
     <string name="search">Search</string>
     <string name="duration">Duration</string>
+    <string name="title_favorite">Favorite</string>
 </resources>

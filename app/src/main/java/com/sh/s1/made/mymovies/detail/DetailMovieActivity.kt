@@ -2,7 +2,6 @@ package com.sh.s1.made.mymovies.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -38,14 +37,12 @@ class DetailMovieActivity : AppCompatActivity() {
         supportActionBar?.title = title.toString()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        Log.d("DATA_CATEGORY", category.toString())
         if (id != null) {
             detailMovieViewModel.getDetailMovie(id.toString(), favorite!!, category!!).observe(this) { movie ->
                 if (movie != null) {
                     when (movie) {
                         is Resource.Loading -> binding.content.progressBar.visibility = View.VISIBLE
                         is Resource.Success -> {
-                            Log.d("DATA_MOVIE_POPULAR", movie.data.toString())
                             binding.content.progressBar.visibility = View.GONE
                             setDetailMovie(movie.data)
                         }

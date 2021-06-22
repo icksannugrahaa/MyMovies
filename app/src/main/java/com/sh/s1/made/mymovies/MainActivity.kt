@@ -2,13 +2,14 @@ package com.sh.s1.made.mymovies
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import com.sh.s1.made.mymovies.databinding.ActivityMainBinding
-import com.sh.s1.made.mymovies.favorite.FavoriteFragment
 import com.sh.s1.made.mymovies.home.HomeFragment
 import com.sh.s1.made.mymovies.search.SearchFragment
 
@@ -20,7 +21,6 @@ class MainActivity : AppCompatActivity(){
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val homeFragment = HomeFragment()
-        val favoriteFragment = FavoriteFragment()
         setCurrentFragment(homeFragment)
 
         setSupportActionBar(binding.appBarMain.toolbar)
@@ -28,7 +28,10 @@ class MainActivity : AppCompatActivity(){
         binding.bnvMain.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.btn_nav_popular -> setCurrentFragment(homeFragment)
-                R.id.btn_nav_favorite -> setCurrentFragment(favoriteFragment)
+                R.id.btn_nav_favorite -> {
+                    val uri = Uri.parse("mymovies://favorite")
+                    startActivity(Intent(Intent.ACTION_VIEW, uri))
+                }
             }
             true
         }
